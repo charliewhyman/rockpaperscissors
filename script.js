@@ -9,21 +9,28 @@ function computerPlay() {
 };
 
 function playRound(playerSelection, computerSelection) {
-    
-    if (playerSelection === "ROCK" && computerSelection === !"ROCK") {
-
+    if (!resultArray.includes(playerSelection)) {
+        'Not a valid input'
     }
     
-    else if (playerSelection === "ROCK" && computerSelection === !"ROCK") {
-
+    else if (playerSelection === 'PAPER') {
+        return 'You lose! ' + computerSelection + ' beats ' + playerSelection;
     }
-    
-    else return "Not valid"
-    
-    
+
+    else if (playerSelection === 'ROCK' && (computerSelection === 'SCISSORS' || computerSelection === 'PAPER')) {
+        return 'You win! ' + playerSelection + ' beats ' + computerSelection;
+    }
+   
+    else if (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
+        return 'You win! ' + playerSelection + ' beats ' + computerSelection;
+    }
+
+    else return 'Draw!';
 }
 
-const playerSelection = 'Rock'.toUpperCase();
+const playerInput = 'Rock';
+const playerSelection = playerInput.toUpperCase();
 const computerSelection = computerPlay();
+console.log(playerInput);
 
 console.log(playRound(playerSelection, computerSelection));
