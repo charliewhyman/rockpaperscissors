@@ -1,5 +1,13 @@
 let resultArray = ["ROCK", "PAPER", "SCISSORS"];
 let playerScore = 0;
+let computerScore = 0;
+
+let playerInput = window.prompt("Enter your choice (rock, paper or scissors)");
+const playerSelection = playerInput.toUpperCase();
+let computerSelection = computerPlay();
+
+const loseMessage = `You lose! Computer's ${computerSelection} beats your ${playerSelection}`;
+const winMessage = `You win! Your ${playerSelection} beats Computer's ${computerSelection}`;
 
 function computerPlay() {
     /* Generate a random number between 1 and resultArray length */
@@ -18,6 +26,7 @@ function playRound(playerSelection, computerSelection) {
     }
     
     else if (playerSelection === "PAPER") {
+        computerScore++;
         return loseMessage;
     }
 
@@ -32,7 +41,7 @@ function playRound(playerSelection, computerSelection) {
     }
 
     else if (playerSelection === "SCISSORS" && computerSelection === "ROCK") {
-        playerScore++;
+        computerScore++;
         return loseMessage;
     }
 
@@ -42,19 +51,22 @@ function playRound(playerSelection, computerSelection) {
 /* Define a function to play a 5 round game that keeps score, and reports a winner/loser */
 function game() {
     for (let step = 0; step < 5; step++) {
-        // Runs 5 times, with values of step 0 through 4.
-        playRound(playerSelection, computerSelection);
+        let playerInput = window.prompt("Enter your choice (rock, paper or scissors)");
+        /* window.prompt("Enter your choice (rock, paper or scissors)"); */
+        let computerSelection = computerPlay();
+        /* Runs 5 times, with values of step 0 through 4. */
+        console.log(playRound(playerSelection, computerSelection));        
       }
+
+    if (playerScore === computerScore) {
+        return `Draw! Both players scored !{playerScore}`;
+    }
+
+    else if (playerScore > computerScore) {
+         return `You win! You scored ${playerScore}, the computer scored ${computerScore}`;
+    }
+
+    else return `You lose! You scored ${playerScore}, the computer scored ${computerScore}`;
 }
 
-const playerInput = 'rock'
-/* window.prompt("Enter your choice (rock, paper or scissors)"); */
-const playerSelection = playerInput.toUpperCase();
-const computerSelection = computerPlay();
-
-const loseMessage = `You lose! Computer's ${computerSelection} beats your ${playerSelection}`;
-const winMessage = `You win! Computer's ${computerSelection} beats your ${computerSelection}`;
-
-console.log("player" + playerSelection);
-console.log("computer" + computerSelection);
 console.log(game())
