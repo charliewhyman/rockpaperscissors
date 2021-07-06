@@ -50,16 +50,17 @@ function playRound(playerSelection, computerSelection) {
 
 /* Define a function to play a 5 round game that keeps score, and reports a winner/loser */
 function game() {
-    for (let step = 0; step < 5; step++) {
+    for (let step = 0; step < 4; step++) {
         let playerInput = window.prompt("Enter your choice (rock, paper or scissors)");
         /* window.prompt("Enter your choice (rock, paper or scissors)"); */
         let computerSelection = computerPlay();
         /* Runs 5 times, with values of step 0 through 4. */
+        console.log(step);
         console.log(playRound(playerSelection, computerSelection));        
       }
 
     if (playerScore === computerScore) {
-        return `Draw! Both players scored !{playerScore}`;
+        return `Draw! Both players scored ${playerScore}`;
     }
 
     else if (playerScore > computerScore) {
