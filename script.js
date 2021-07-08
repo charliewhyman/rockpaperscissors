@@ -4,11 +4,20 @@ let computerScore = 0;
 
 let computerSelection = computerPlay();
 
-function playerPlay() {
-    let playerInput = window.prompt("Enter your choice (rock, paper or scissors)");
+// buttons is a node list. It looks and acts much like an array.
+const buttons = document.querySelectorAll('button');
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+
+  // and for each one we add a 'click' listener
+  button.addEventListener('click', () => {
+    let playerInput = button.id;
     const playerSelection = playerInput.toUpperCase();
-    return playerSelection;
-}
+    
+    console.log(playRound(playerSelection, computerPlay()));
+  });
+});
 
 function computerPlay() {
     /* Generate a random number between 1 and resultArray length */
@@ -51,10 +60,8 @@ function playRound(playerSelection, computerSelection) {
     else return "Not a valid input";
 }
 
-/* Define a function to play a 5 round game that keeps score, and reports a winner/loser */
-function game() {
-        
-        /* Runs 5 times, with values of step 0 through 4. */
+/* Define a function to play a game that keeps score, and reports a winner/loser */
+function game() {        
         console.log(playRound(playerPlay(), computerPlay()));        
       
 
@@ -69,4 +76,3 @@ function game() {
     else return `You lose! You scored ${playerScore}, the computer scored ${computerScore}`;
 }
 
-console.log(game())
