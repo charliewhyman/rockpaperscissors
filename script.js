@@ -4,6 +4,14 @@ let computerScore = 0;
 
 let computerSelection = computerPlay();
 
+//create a results div and display the score
+const container = document.querySelector('.container');
+
+const content = document.createElement('div');
+content.classList.add('content');
+
+container.appendChild(content);
+
 // buttons is a node list. It looks and acts much like an array.
 const buttons = document.querySelectorAll('button');
 
@@ -15,7 +23,8 @@ buttons.forEach((button) => {
     let playerInput = button.id;
     const playerSelection = playerInput.toUpperCase();
     
-    console.log(playRound(playerSelection, computerPlay()));
+    content.textContent = playRound(playerSelection, computerPlay());
+    container.appendChild(div);
   });
 });
 
@@ -75,4 +84,3 @@ function game() {
 
     else return `You lose! You scored ${playerScore}, the computer scored ${computerScore}`;
 }
-
