@@ -24,7 +24,6 @@ buttons.forEach((button) => {
     const playerSelection = playerInput.toUpperCase();
     
     content.textContent = playRound(playerSelection, computerPlay());
-    container.appendChild(div);
   });
 });
 
