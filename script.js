@@ -6,10 +6,8 @@ let computerSelection = computerPlay();
 
 //create a results div and display the score
 const container = document.querySelector('.container');
-
 const content = document.createElement('div');
 content.classList.add('content');
-
 container.appendChild(content);
 
 // buttons is a node list. It looks and acts much like an array.
@@ -24,9 +22,14 @@ buttons.forEach((button) => {
     const playerSelection = playerInput.toUpperCase();
     
     content.textContent = playRound(playerSelection, computerPlay());
+    scoreText.textContent = 'Player: ' + playerScore + ' Computer: '+computerScore;
+    resultText.textContent = declareResult();
   });
 });
 
+
+
+//play functions
 function computerPlay() {
     /* Generate a random number between 1 and resultArray length */
     randomNumber = Math.floor(Math.random() * resultArray.length);
@@ -39,7 +42,7 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
     const loseMessage = `You lose! Computer's ${computerSelection} beats your ${playerSelection}`;
     const winMessage = `You win! Your ${playerSelection} beats Computer's ${computerSelection}`;
-
+    
     /* Create if statements to compare player and computer selections */
     if (playerSelection === computerSelection) {
         return "Draw!"
@@ -68,18 +71,34 @@ function playRound(playerSelection, computerSelection) {
     else return "Not a valid input";
 }
 
-/* Define a function to play a game that keeps score, and reports a winner/loser */
-function game() {        
-        console.log(playRound(playerPlay(), computerPlay()));        
-      
-
-    if (playerScore === computerScore) {
-        return `Draw! Both players scored ${playerScore}`;
-    }
-
-    else if (playerScore > computerScore) {
-         return `You win! You scored ${playerScore}, the computer scored ${computerScore}`;
-    }
-
-    else return `You lose! You scored ${playerScore}, the computer scored ${computerScore}`;
+function disableButtons() {
+    buttons.forEach(elem => {
+        elem.disabled = true
+    })
 }
+
+function declareResult() {
+    const playerWinMessage = "You win! Reload page to play again."
+    const playerLoseMessage = "You lose! Reload page to play again."
+
+    if (playerScore === 5 && computerScore <5) {
+        disableButtons();
+        return playerWinMessage;
+    }
+    else if (playerScore < 5 && computerScore ===5) {
+        disableButtons();
+        return playerLoseMessage;
+    }
+
+}
+
+// create a score element
+const scoreText = document.createElement('P');
+scoreText.classList.add('scoreText');
+scoreText.style.color = 'red';
+container.appendChild(scoreText);
+
+// create a result element
+const resultText = document.createElement('P');
+resultText.classList.add('resultText');
+container.appendChild(resultText);
