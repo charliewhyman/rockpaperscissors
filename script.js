@@ -1,4 +1,4 @@
-let resultArray = ["ROCK", "PAPER", "SCISSORS"];
+let resultArray = ['ROCK', 'PAPER', 'SCISSORS'];
 let playerScore = 0;
 let computerScore = 0;
 
@@ -45,30 +45,30 @@ function playRound(playerSelection, computerSelection) {
     
     /* Create if statements to compare player and computer selections */
     if (playerSelection === computerSelection) {
-        return "Draw!"
+        return 'Draw!'
     }
     
-    else if (playerSelection === "PAPER") {
+    else if (playerSelection === 'PAPER') {
         computerScore++;
         return loseMessage;
     }
 
-    else if (playerSelection === "ROCK" && (computerSelection === "SCISSORS" || computerSelection === "PAPER")) {
+    else if (playerSelection === 'ROCK' && (computerSelection === 'SCISSORS' || computerSelection === 'PAPER')) {
         playerScore++;
         return winMessage;
     }
    
-    else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
+    else if (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
         playerScore++;
         return winMessage;
     }
 
-    else if (playerSelection === "SCISSORS" && computerSelection === "ROCK") {
+    else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK') {
         computerScore++;
         return loseMessage;
     }
 
-    else return "Not a valid input";
+    else return 'Not a valid input';
 }
 
 function disableButtons() {
@@ -78,8 +78,8 @@ function disableButtons() {
 }
 
 function declareResult() {
-    const playerWinMessage = "You win! Reload page to play again."
-    const playerLoseMessage = "You lose! Reload page to play again."
+    const playerWinMessage = 'You win! Reload page to play again.'
+    const playerLoseMessage = 'You lose! Reload page to play again.'
 
     if (playerScore === 5 && computerScore <5) {
         disableButtons();
